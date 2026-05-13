@@ -48,9 +48,49 @@ class linkedList {
 
     return temp;
   }
+
+  unshift(value) {
+    const newNode = new Node(value);
+
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    }
+
+    newNode.next = this.head;
+    this.head = newNode;
+
+    this.length++;
+    return this;
+  }
+
+  shift() {
+    if (!this.head) {
+      return undefined;
+    }
+    // Point the first node/element
+    let temp = this.head;
+    // Move the head to next node/element
+    this.head = this.head.next;
+
+    temp.next = null;
+    this.length--;
+
+    if (this.length === 0) {
+      this.tail = null;
+    }
+    return temp;
+  }
+
+  getFirst() {
+    return this.head;
+  }
 }
 
 const myLinkedList = new linkedList(1);
 myLinkedList.push(10);
-myLinkedList.pop();
-console.log(myLinkedList);
+myLinkedList.push(20);
+// myLinkedList.pop();
+myLinkedList.unshift(0);
+myLinkedList.shift();
+console.log(myLinkedList.getFirst());

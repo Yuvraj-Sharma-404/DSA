@@ -85,12 +85,75 @@ class linkedList {
   getFirst() {
     return this.head;
   }
+
+  getLast() {
+    if (!this.head) {
+      return null;
+    }
+
+    let temp = this.head;
+
+    while (temp) {
+      if (!temp.next) {
+        return temp;
+      }
+
+      temp = temp.next;
+    }
+  }
+
+  getElementById(index) {
+    let counter = 0;
+    let temp = this.head;
+
+    while (temp) {
+      if (counter === index) {
+        return temp;
+      }
+
+      counter++;
+      temp = temp.next;
+    }
+    return null;
+  }
+
+  set(index, value) {
+    let temp = this.getElementById(index);
+    if (temp) {
+      temp.value = value;
+      return true;
+    }
+
+    return false;
+  }
+
+  insert(index, value) {
+    if (index === 0) {
+      return this.unshift(value);
+    }
+
+    if (index === this.length) {
+      return this.push(value);
+    }
+
+    const newNode = new Node(value);
+    // Use the getElementById method to find the node right before the desired position (index - 1)
+    const temp = this.getElementById(index - 1);
+
+    newNode.next = temp.next;
+    temp.next = newNode;
+    this.length++;
+    return true;
+  }
 }
 
 const myLinkedList = new linkedList(1);
-myLinkedList.push(10);
-myLinkedList.push(20);
+myLinkedList.push(2);
+myLinkedList.push(3);
+myLinkedList.push(4);
 // myLinkedList.pop();
 myLinkedList.unshift(0);
 myLinkedList.shift();
-console.log(myLinkedList.getFirst());
+// 1myLinkedList.set(3, 10);
+myLinkedList.insert(2, "btw 2 & 3");
+console.dir(myLinkedList, { depth: null });

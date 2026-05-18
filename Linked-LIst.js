@@ -145,6 +145,17 @@ class linkedList {
     this.length++;
     return true;
   }
+
+  size() {
+    let counter = 0;
+    let temp = this.head;
+    while (temp) {
+      counter++;
+      temp = temp.next;
+    }
+
+    return counter;
+  }
 }
 
 const myLinkedList = new linkedList(1);
@@ -155,5 +166,6 @@ myLinkedList.push(4);
 myLinkedList.unshift(0);
 myLinkedList.shift();
 // 1myLinkedList.set(3, 10);
-myLinkedList.insert(2, "btw 2 & 3");
-console.dir(myLinkedList, { depth: null });
+// myLinkedList.insert(2, "btw 2 & 3");
+// console.dir(myLinkedList, { depth: null });
+console.log(myLinkedList.size());

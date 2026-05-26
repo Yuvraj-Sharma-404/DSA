@@ -156,6 +156,10 @@ class linkedList {
 
     return counter;
   }
+
+  clear() {
+    this.head = null;
+  }
 }
 
 const myLinkedList = new linkedList(1);
@@ -167,5 +171,6 @@ myLinkedList.unshift(0);
 myLinkedList.shift();
 // 1myLinkedList.set(3, 10);
 // myLinkedList.insert(2, "btw 2 & 3");
-console.dir(myLinkedList, { depth: null });
-console.log(myLinkedList.size());
+// console.dir(myLinkedList, { depth: null });
+// console.log(myLinkedList.size());
+console.log(myLinkedList.clear());
